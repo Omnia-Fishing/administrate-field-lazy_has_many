@@ -2,12 +2,11 @@ function bindLazyHasManys() {
   const lazySelects = document.querySelectorAll('[data-component="lazy-has-many"]')
 
   lazySelects.forEach(lazySelect => {
-    const target = lazySelect.querySelector('input[type="hidden"]')
     const input = lazySelect.querySelector('input[type="search"]')
     const button = lazySelect.querySelector('button[type="button"]')
     const popout = lazySelect.querySelector('[data-target="popout"]')
     const output = lazySelect.querySelector('[data-target="output"]')
-    const select = output.querySelector('select')
+    const select = output.querySelector('.results-select')
 
     const options = JSON.parse(lazySelect.getAttribute('data-lazy-has-many'))
 
@@ -16,7 +15,6 @@ function bindLazyHasManys() {
     let lastDebounce = undefined
 
     function onQuery (event) {
-      const value = event.currentTarget.value
 
       if (controller) {
         // abort the previous request

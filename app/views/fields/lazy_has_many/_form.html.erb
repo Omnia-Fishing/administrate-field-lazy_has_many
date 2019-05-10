@@ -29,10 +29,11 @@ Instead of the default, this only loads the results lazily
        }.to_json
      %>"
 >
-  <%= f.hidden_field(field.value_attribute) %>
-
-  <button type="button" disabled="disabled" class="button"><%= field.current_value %></button>
-
+  <div class="field-unit__field">
+    <%= f.select(field.attribute_key, nil, {}, multiple: true) do %>
+      <%= options_for_select(field.associated_resource_options, field.selected_options) %>
+    <% end %>
+  </div>
   <div class="popout" data-target="popout">
     <input type="search" class="search" placeholder="Search...">
     <i class="icon">
@@ -41,7 +42,7 @@ Instead of the default, this only loads the results lazily
       </svg>
     </i>
     <output class="results" data-target="output">
-      <select data-max-size="<%= field.size %>">
+      <select class="results-select" data-max-size="<%= field.size %>">
         <option></option>
       </select>
     </output>
