@@ -1,15 +1,15 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'administrate/field/lazy_belongs_to/version'
+require 'administrate/field/lazy_has_many/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'administrate-field-lazy_belongs_to'
-  spec.version       = Administrate::Field::LazyBelongsToVersion::VERSION
+  spec.name          = 'administrate-field-lazy_has_many'
+  spec.version       = Administrate::Field::LazyHasManyVersion::VERSION
   spec.authors       = ['Derk-Jan Karrenbeld']
   spec.email         = ['derk-jan@xpbytes.com']
 
   spec.summary       = 'A belongs to-like field that lazily loads candidates from a custom endpoint.'
-  spec.homepage      = 'https://github.com/XPBytes/administrate-field-lazy_belongs_to'
+  spec.homepage      = 'https://github.com/XPBytes/administrate-field-lazy_has_many'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

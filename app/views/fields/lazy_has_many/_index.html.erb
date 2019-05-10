@@ -1,7 +1,7 @@
 <%#
-# LazyBelongsTo Index Partial
+# LazyHasMany Index Partial
 
-This partial renders a belongs_to relationship,
+This partial renders a has_many relationship,
 to be displayed on a resource's index page.
 
 By default, the relationship is rendered as a link to the associated object.
@@ -9,11 +9,11 @@ By default, the relationship is rendered as a link to the associated object.
 ## Local variables:
 
 - `field`:
-  An instance of [Administrate::Field::LazyBelongsTo][1].
-  A wrapper around the [Administrate::Field::BelongsTo][2] field
+  An instance of [Administrate::Field::LazyHasMany][1].
+  A wrapper around the [Administrate::Field::HasMany][2] field
 
-[1]: http://www.rubydoc.info/gems/administrate-field-lazy_belongs_to/Administrate/Field/LazyBelongsTo
-[2]: http://www.rubydoc.info/gems/administrate/Administrate/Field/BelongsTo
+[1]: http://www.rubydoc.info/gems/administrate-field-lazy_has_many/Administrate/Field/LazyHasMany
+[2]: http://www.rubydoc.info/gems/administrate/Administrate/Field/HasMany
 %>
 
 <% if field.data %>

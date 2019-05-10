@@ -1,4 +1,4 @@
-.field-unit--lazy-belongs-to .popout {
+.field-unit--lazy-has-many .popout {
     display: none;
     background-color: white;
     box-shadow: rgba(13, 22, 38, 0.1) 0px 0px 0px 1px, rgba(13, 22, 38, 0.1) 0px 4px 11px;
@@ -8,11 +8,11 @@
     border-radius: 4px;
 }
 
-.field-unit--lazy-belongs-to .popout.active {
+.field-unit--lazy-has-many .popout.active {
     display: block;
 }
 
-.field-unit--lazy-belongs-to .search {
+.field-unit--lazy-has-many .search {
     height: 100%;
     width: auto;
     line-height: 38px;
@@ -29,7 +29,7 @@
     margin: 8px;
 }
 
-.field-unit--lazy-belongs-to .icon {
+.field-unit--lazy-has-many .icon {
     display: none;
     position: absolute;
     right: 15px;
@@ -40,16 +40,16 @@
     pointer-events: none;
 }
 
-.field-unit--lazy-belongs-to .search:placeholder-shown + .field-unit--lazy-belongs-to .icon {
+.field-unit--lazy-has-many .search:placeholder-shown + .field-unit--lazy-has-many .icon {
     display: block;
 }
 
-.field-unit--lazy-belongs-to .results {
+.field-unit--lazy-has-many .results {
     display: block;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 0px inset;
 }
 
-.field-unit--lazy-belongs-to .results select {
+.field-unit--lazy-has-many .results select {
     width: 100%;
     border: 0;
 
@@ -58,6 +58,6 @@
     appearance: none;
 }
 
-.field-unit--lazy-belongs-to .results option {
+.field-unit--lazy-has-many .results option {
     padding: 8px;
 }

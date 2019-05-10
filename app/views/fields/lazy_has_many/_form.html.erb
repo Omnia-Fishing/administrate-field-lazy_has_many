@@ -1,7 +1,7 @@
 <%#
-# LazyBelongsTo Form Partial
+# LazyHasMany Form Partial
 
-This partial renders an input element for belongs_to relationships.
+This partial renders an input element for has_many relationships.
 Instead of the default, this only loads the results lazily
 
 ## Local variables:
@@ -9,19 +9,19 @@ Instead of the default, this only loads the results lazily
 - `f`:
   A Rails form generator, used to help create the appropriate input fields.
 - `field`:
-  An instance of [Administrate::Field::LazyBelongsTo][1].
-  A wrapper around the [Administrate::Field::BelongsTo][2] field
+  An instance of [Administrate::Field::LazyHasMany][1].
+  A wrapper around the [Administrate::Field::HasMany][2] field
 
-[1]: http://www.rubydoc.info/gems/administrate-field-lazy_belongs_to/Administrate/Field/LazyBelongsTo
-[2]: http://www.rubydoc.info/gems/administrate/Administrate/Field/BelongsTo
+[1]: http://www.rubydoc.info/gems/administrate-field-lazy_has_many/Administrate/Field/LazyHasMany
+[2]: http://www.rubydoc.info/gems/administrate/Administrate/Field/HasMany
 %>
 
 <div class="field-unit__label">
   <%= f.label field.permitted_attribute %>
 </div>
 <div class="field-unit__field"
-     data-component="lazy-belongs-to"
-     data-lazy-belongs-to="<%=
+     data-component="lazy-has-many"
+     data-lazy-has-many="<%=
        {
          url: field.templated_action,
          value: field.value_attribute,

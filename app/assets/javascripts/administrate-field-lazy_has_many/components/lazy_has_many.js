@@ -1,5 +1,5 @@
-function bindLazyBelongsTos() {
-  const lazySelects = document.querySelectorAll('[data-component="lazy-belongs-to"]')
+function bindLazyHasManys() {
+  const lazySelects = document.querySelectorAll('[data-component="lazy-has-many"]')
 
   lazySelects.forEach(lazySelect => {
     const target = lazySelect.querySelector('input[type="hidden"]')
@@ -9,7 +9,7 @@ function bindLazyBelongsTos() {
     const output = lazySelect.querySelector('[data-target="output"]')
     const select = output.querySelector('select')
 
-    const options = JSON.parse(lazySelect.getAttribute('data-lazy-belongs-to'))
+    const options = JSON.parse(lazySelect.getAttribute('data-lazy-has-many'))
 
     let controller = undefined
     let lastResult = undefined
@@ -85,7 +85,7 @@ function bindLazyBelongsTos() {
     button.addEventListener('click', showPopout)
 
     document.addEventListener('click', (e) => {
-      const lazy = e.target && e.target.closest('[data-component="lazy-belongs-to"]')
+      const lazy = e.target && e.target.closest('[data-component="lazy-has-many"]')
       if (lazy !== lazySelect) {
         hidePopout()
       }
@@ -107,8 +107,8 @@ function bindLazyBelongsTos() {
 
 if (window.Turbolinks && window.Turbolinks.supported) {
   document.addEventListener("turbolinks:load", function () {
-    bindLazyBelongsTos()
+    bindLazyHasManys()
   })
 } else {
-  document.addEventListener('DOMContentLoaded', bindLazyBelongsTos)
+  document.addEventListener('DOMContentLoaded', bindLazyHasManys)
 }

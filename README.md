@@ -1,7 +1,7 @@
-# Administrate::Field::LazyBelongsTo
+# Administrate::Field::LazyHasMany
 
-[![Build Status: master](https://travis-ci.com/XPBytes/administrate-field-lazy_belongs_to.svg)](https://travis-ci.com/XPBytes/administrate-field-lazy_belongs_to)
-[![Gem Version](https://badge.fury.io/rb/administrate-field-lazy_belongs_to.svg)](https://badge.fury.io/rb/administrate-field-lazy_belongs_to)
+[![Build Status: master](https://travis-ci.com/XPBytes/administrate-field-lazy_has_many.svg)](https://travis-ci.com/XPBytes/administrate-field-lazy_has_many)
+[![Gem Version](https://badge.fury.io/rb/administrate-field-lazy_has_many.svg)](https://badge.fury.io/rb/administrate-field-lazy_has_many)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 An input field that shows search results of an association, lazily.
@@ -13,7 +13,7 @@ An input field that shows search results of an association, lazily.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'administrate-field-lazy_belongs_to'
+gem 'administrate-field-lazy_has_many'
 ```
 
 And then execute:
@@ -22,12 +22,12 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install administrate-field-lazy_belongs_to
+    $ gem install administrate-field-lazy_has_many
 
 ## Usage
 
 This field needs a bit of setup, unless you're using [XPBytes/administrate-base_controller](https://github.com/XPBytes/administrate-base_controller),
-in order to lazily collect the values you're looking for. If you _are_ using the `BaseController`, you only need to 
+in order to lazily collect the values you're looking for. If you _are_ using the `BaseController`, you only need to
 set-up the [fields](#fields).
 
 ### Controller
@@ -59,7 +59,7 @@ field: `resources.to_json(fields: %i[id name])`.
 
 You could also use the dashboard display:
 ```ruby
-render json: resources.map do |resource| 
+render json: resources.map do |resource|
   { id: resource.id, name: dashboard.display_resource(resource) }
 end
 ```
@@ -82,7 +82,7 @@ class BookDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::String,
     name: Field::String,
-    author: Field::LazyBelongsTo.with_options(
+    author: Field::LazyHasMany.with_options(
       placeholder: 'Select the author',
       action: ->(field, q:) { field.url_helpers.admin_publisher_books_path(field.resource.publisher, search: q) },
       value_attribute: :id,
@@ -91,7 +91,7 @@ class BookDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
-  
+
   # ...
 end
 ```
@@ -107,7 +107,7 @@ example above it will only show authors with the current publisher.
 | `placeholder` | `string` | `'Select a %<associated_class>s'` | The button text if there is no current value |
 | `action` | `lambda -> (field, q: string)` |  | The path to get the associated |
 | `value_attribute` | `string` or `symbol` | `id` | The attribute that you want to store in the field (`association_id`) |
-| `label_attribute` | `string` or `symbol` | `name` | The attribute that you want to show to the user (label) | 
+| `label_attribute` | `string` or `symbol` | `name` | The attribute that you want to show to the user (label) |
 | `size` | `number` | `10` | The number of results to show at most (the rest will scroll) |
 
 ## Related
@@ -125,7 +125,7 @@ example above it will only show authors with the current publisher.
 - [`Administrate::Field::Code`](https://github.com/XPBytes/administrate-field-code): :pencil: A `text` field that shows code.
 - [`Administrate::Field::Hyperlink`](https://github.com/XPBytes/administrate-field-hyperlink): :pencil: A `string` field that is shows a hyperlink.
 - [`Adminisrtate::Field::JsonEditor`](https://github.com/XPBytes/administrate-field-json_editor): :pencil: A `text` field that shows a [JSON editor](https://github.com/josdejong/jsoneditor).
-- [`Administrate::Field::ScopedBelongsTo`](https://github.com/XPBytes/administrate-field-scoped_belongs_to): :pencil: A `belongs_to` field that yields itself to the scope `lambda`.
+- [`Administrate::Field::ScopedHasMany`](https://github.com/XPBytes/administrate-field-scoped_has_many): :pencil: A `has_many` field that yields itself to the scope `lambda`.
 - [`Administrate::Field::ScopedHasMany`](https://github.com/XPBytes/administrate-field-scoped_has_many): :pencil: A `has_many` field that yields itself to the scope `lambda`.
 - [`Administrate::Field::TimeAgo`](https://github.com/XPBytes/administrate-field-time_ago): :pencil: A `date_time` field that shows its data as `time_ago` since.
 
@@ -140,4 +140,4 @@ push git commits and tags, and push the `.gem` file to [rubygems.org](https://ru
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at [XPBytes/administrate-field-lazy_belongs_to](https://github.com/XPBytes/administrate-field-lazy_belongs_to).
+Bug reports and pull requests are welcome on GitHub at [XPBytes/administrate-field-lazy_has_many](https://github.com/XPBytes/administrate-field-lazy_has_many).
