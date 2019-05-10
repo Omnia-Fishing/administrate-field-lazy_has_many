@@ -29,7 +29,7 @@ Instead of the default, this only loads the results lazily
        }.to_json
      %>"
 >
-  <%= f.hidden_field(field.permitted_attribute) %>
+  <%= f.hidden_field(field.value_attribute) %>
 
   <button type="button" disabled="disabled" class="button"><%= field.current_value %></button>
 
