@@ -14,6 +14,26 @@ module Administrate
 
         isolate_namespace Administrate
       end
+
+      def templated_action
+        options.fetch(:action).call(self, q: '{q}')
+      end
+
+      def value_attribute
+        options.fetch(:value_attribute) { 'id' }
+      end
+
+      def label_attribute
+        options.fetch(:label_attribute) { 'name' }
+      end
+
+      def size
+        options.fetch(:size) { 10 }
+      end
+
+      def url_helpers
+        Rails.application.routes.url_helpers
+      end
     end
   end
 end
