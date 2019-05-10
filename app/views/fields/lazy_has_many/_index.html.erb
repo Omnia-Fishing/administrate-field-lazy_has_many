@@ -1,28 +1,14 @@
 <%#
-# LazyHasMany Index Partial
-
+# HasMany Index Partial
 This partial renders a has_many relationship,
 to be displayed on a resource's index page.
-
-By default, the relationship is rendered as a link to the associated object.
-
+By default, the relationship is rendered
+as a count of how many objects are associated through the relationship.
 ## Local variables:
-
 - `field`:
-  An instance of [Administrate::Field::LazyHasMany][1].
-  A wrapper around the [Administrate::Field::HasMany][2] field
-
-[1]: http://www.rubydoc.info/gems/administrate-field-lazy_has_many/Administrate/Field/LazyHasMany
-[2]: http://www.rubydoc.info/gems/administrate/Administrate/Field/HasMany
+  An instance of [Administrate::Field::HasMany][1].
+  A wrapper around the has_many relationship pulled from the database.
+[1]: http://www.rubydoc.info/gems/administrate/Administrate/Field/HasMany
 %>
 
-<% if field.data %>
-  <% if valid_action?(:show, field.associated_class) %>
-    <%= link_to(
-      field.display_associated_resource,
-      [namespace, field.data],
-    ) %>
-  <% else %>
-    <%= field.display_associated_resource %>
-  <% end %>
-<% end %>
+<%= pluralize(field.data.size, field.attribute.to_s.humanize.downcase.singularize) %>
