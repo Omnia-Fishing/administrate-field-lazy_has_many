@@ -15,6 +15,16 @@ module Administrate
         isolate_namespace Administrate
       end
 
+      def display_placeholder
+        options.fetch(:placeholder) do
+          format('Select a %<association>s', association: associated_class.name)
+        end
+      end
+
+      def current_value
+        data ? display_associated_resource : display_placeholder
+      end
+
       def templated_action
         options.fetch(:action).call(self, q: '{q}')
       end
