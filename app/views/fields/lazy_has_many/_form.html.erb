@@ -11,13 +11,10 @@ Instead of the default, this only loads the results lazily
 - `field`:
   An instance of [Administrate::Field::LazyHasMany][1].
   A wrapper around the [Administrate::Field::HasMany][2] field
-
-[1]: http://www.rubydoc.info/gems/administrate-field-lazy_has_many/Administrate/Field/LazyHasMany
-[2]: http://www.rubydoc.info/gems/administrate/Administrate/Field/HasMany
 %>
 
 <div class="field-unit__label">
-  <%= f.label field.permitted_attribute %>
+  <%= f.label field.name %>
 </div>
 <div class="field-unit__field"
      data-component="lazy-has-many"
@@ -30,9 +27,10 @@ Instead of the default, this only loads the results lazily
      %>"
 >
   <div class="field-unit__field">
-    <%= f.select(field.attribute_key, nil, {}, multiple: true) do %>
-      <%= options_for_select(field.associated_resource_options, field.selected_options) %>
-    <% end %>
+    <div class="selectwarning">
+      Make sure the items you want to be included are selected before submitting.
+    </div>
+    <%= f.collection_select field.attribute_key, field.data, :waterbody_id, :primary_name, { include_blank: field.display_placeholder }, { multiple: true,  id: "selected", class: "selected" }%>
   </div>
   <div class="popout" data-target="popout">
     <input type="search" class="search" placeholder="Search...">
