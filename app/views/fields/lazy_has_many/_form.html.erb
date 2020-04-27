@@ -30,7 +30,7 @@ Instead of the default, this only loads the results lazily
     <div class="selectwarning">
       Make sure the items you want to be included are selected before submitting.
     </div>
-    <%= f.collection_select field.attribute_key, field.data, :waterbody_id, :primary_name, { include_blank: field.display_placeholder }, { multiple: true,  id: "selected", class: "selected" }%>
+    <%= f.collection_select field.attribute_key, field.data, field.value_attribute, field.label_attribute, { include_blank: field.display_placeholder }, { multiple: true,  id: "selected", class: "selected" }%>
   </div>
   <div class="popout" data-target="popout">
     <input type="search" class="search" placeholder="Search...">
