@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.5
+
+- Bugfix
+
 ## 0.1.4
 
 - Fix an issue when `Turbolinks` is not defined
